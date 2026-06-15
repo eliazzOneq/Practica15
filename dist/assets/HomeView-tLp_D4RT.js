@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as n,o as i}from"./index-CK1tlcVX.js";const l={};function u(o,e){return i(),s("div",null,[e[2]||(e[2]=n("h1",null,"Inicio",-1)),n("button",{onClick:e[0]||(e[0]=r=>o.$router.push("/login"))},"Iniciar sesión"),n("button",{onClick:e[1]||(e[1]=r=>o.$router.push("/register"))},"Registrarse")])}const f=t(l,[["render",u]]);export{f as default};
