@@ -1,0 +1,157 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Tienda",
+        "description": "API REST para la gestión de productos",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Autenticación"
+                ],
+                "summary": "Iniciar sesión",
+                "operationId": "bae68d1c55329ecb6e41f48285840c8f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login correcto"
+                    },
+                    "401": {
+                        "description": "Credenciales inválidas"
+                    }
+                }
+            }
+        },
+        "/api/v1/productos": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Listar productos",
+                "description": "Display a listing of the resource.",
+                "operationId": "2f880536579b0d60fc19b46081442e63",
+                "responses": {
+                    "200": {
+                        "description": "Listado de productos"
+                    }
+                }
+            }
+        },
+        "/api/v1/productos/{id}": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Mostrar producto",
+                "description": "Display the specified resource.",
+                "operationId": "ded37ec6cea76bf6bbdeac0c648c3bb6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Producto encontrado"
+                    },
+                    "404": {
+                        "description": "Producto no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/v1/productos/{producto}": {
+            "delete": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Eliminar producto",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "cd25fa68c63973f483241b980e4b8c0b",
+                "parameters": [
+                    {
+                        "name": "producto",
+                        "in": "path",
+                        "description": "ID del producto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Producto eliminado correctamente"
+                    },
+                    "404": {
+                        "description": "Producto no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/v2/productos": {
+            "get": {
+                "tags": [
+                    "Productos V2"
+                ],
+                "summary": "Listado de productos con búsqueda full-text",
+                "operationId": "a234f0554c91052cd2b87d4ab88f5905",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "Texto para búsqueda full-text",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Listado obtenido"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Autenticación",
+            "description": "Autenticación"
+        },
+        {
+            "name": "Productos",
+            "description": "Productos"
+        },
+        {
+            "name": "Productos V2",
+            "description": "Productos V2"
+        }
+    ]
+}
